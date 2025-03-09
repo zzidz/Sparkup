@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SparkUp</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
+        .container { width: 80%; margin: auto; padding: 20px; background: white; }
+        header { background: #007bff; color: white; padding: 15px; text-align: center; }
+        .post { border-bottom: 1px solid #ddd; padding: 15px; }
+        .post h3 { margin: 0; }
+        .post p { color: #555; }
+        .btn { display: inline-block; margin-top: 10px; padding: 8px 12px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; }
+        .chat-box { border: 1px solid #ddd; padding: 15px; background: #fafafa; margin-top: 20px; }
+        .chat-messages { max-height: 200px; overflow-y: auto; padding: 10px; background: white; border: 1px solid #ddd; }
+        .chat-input { width: 80%; padding: 10px; margin-top: 10px; }
+        .send-btn { padding: 10px; background: #007bff; color: white; border: none; cursor: pointer; }
+        .category-menu { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
+        .category-menu a { padding: 10px; background: #ddd; text-decoration: none; color: black; border-radius: 5px; }
+        .login-box { text-align: center; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SparkUp</h1>
+    </header>
+    <div class="container">
+        <div class="login-box">
+            <h3>회원가입 / 로그인</h3>
+            <input type="text" id="username" placeholder="사용자명 입력">
+            <button onclick="login()">로그인</button>
+        </div>
+        
+        <h2>🔥 인기 아이디어</h2>
+        <div class="category-menu">
+            <a href="#">💡 창업</a>
+            <a href="#">📱 IT</a>
+            <a href="#">🏋️ 헬스</a>
+            <a href="#">🚀 스타트업</a>
+        </div>
+        
+        <div class="post">
+            <h3>AI 자동 부동산 거래 시스템</h3>
+            <p>AI가 공인중개사 없이 집을 추천해 주는 플랫폼</p>
+            <a href="#" class="btn">자세히 보기</a>
+        </div>
+        <div class="post">
+            <h3>스마트 헬스 보조기구</h3>
+            <p>손목이 불편한 사람도 쉽게 사용할 수 있는 운동 기구</p>
+            <a href="#" class="btn">자세히 보기</a>
+        </div>
+        <a href="#" class="btn">아이디어 등록하기</a>
+
+        <div class="chat-box">
+            <h3>💬 실시간 커뮤니티 채팅</h3>
+            <div class="chat-messages" id="chatMessages"></div>
+            <input type="text" id="chatInput" class="chat-input" placeholder="메시지를 입력하세요">
+            <button class="send-btn" onclick="sendMessage()">전송</button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const messages = document.getElementById('chatMessages');
+            if (input.value.trim() !== "") {
+                const message = document.createElement('p');
+                message.textContent = input.value;
+                messages.appendChild(message);
+                input.value = "";
+                messages.scrollTop = messages.scrollHeight;
+            }
+        }
+
+        function login() {
+            const username = document.getElementById('username').value;
+            if (username.trim() !== "") {
+                alert(username + "님, 환영합니다!");
+            } else {
+                alert("사용자명을 입력해주세요.");
+            }
+        }
+    </script>
+</body>
+</html>
